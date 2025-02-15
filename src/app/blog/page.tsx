@@ -19,26 +19,29 @@ export default function BlogPage() {
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
   );
 
-  // Compute streaks: for each day, if at least two tasks are valid then streak increases
+  // Compute streaks: if at least two tasks are valid then streak increases
   let prevStreak = 0;
   const blogsWithStreak = blogsAsc.map((blog) => {
     let validCount = 0;
-    // For numeric achievements, a value of 0 counts as false
     if (blog.achievements?.dsa && blog.achievements.dsa > 0) validCount++;
     if (blog.achievements?.money && blog.achievements.money > 0) validCount++;
-    // For workout, true counts as success
     if (blog.achievements?.workout) validCount++;
 
     let streak = 0;
     if (validCount >= 2) {
       streak = prevStreak + 1;
     } else {
-      // Break day: streak resets to 0.
-      streak = 0;
+      streak = 0; // Break day: streak resets to 0.
     }
     prevStreak = streak;
     return { ...blog, streak };
   });
+
+  // Compute the longest streak among all blog entries
+  const longestStreak = blogsWithStreak.reduce(
+    (max, blog) => Math.max(max, blog.streak),
+    0
+  );
 
   // Sort descending for display (most recent first)
   const blogsDesc = blogsWithStreak.sort(
@@ -51,7 +54,13 @@ export default function BlogPage() {
         title="Blogs & Journey"
         description="New day new challenges and a new blog"
       />
-      <hr className="my-8" />
+      {/* Longest streak tag */}
+      <div className="mb-4 mt-8 text-left">
+        <span className="rounded bg-yellow-400 px-3 py-1 text-xs font-bold text-black">
+          Longest Streak: {longestStreak} days
+        </span>
+      </div>
+      <hr className="my-6" />
 
       {blogsDesc.length ? (
         <div className="grid gap-10 sm:grid-cols-2">

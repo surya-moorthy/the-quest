@@ -10,8 +10,8 @@ const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend" });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Mdx Blog Template",
-    default: "Mdx Blog Template",
+    template: "The Quest by Ramxcodes",
+    default: "The Quest by Ramxcodes",
   },
 };
 

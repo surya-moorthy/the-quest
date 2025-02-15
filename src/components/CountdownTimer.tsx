@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
   // Define the fixed dates
-  const startDate = new Date("2025-02-20T00:00:00");
+  const startDate = new Date("2025-02-16T00:00:00");
   const targetDate = new Date("2025-08-13T00:00:00");
 
   const calculateTimeLeft = () => {
@@ -37,10 +37,10 @@ const CountdownTimer = () => {
 
   return (
     <div className="my-4 text-center">
-      <h2 className="text-lg font-bold">Countdown</h2>
-      <p className="text-sm">
-        {timeLeft.days} days, {timeLeft.hours} hours, {timeLeft.minutes} minutes,{" "}
-        {timeLeft.seconds} seconds, {timeLeft.milliseconds} ms
+      {/* <h2 className="text-2xl font-bold">Countdown</h2> */}
+      <p className="rounded-md border px-4 py-2 text-xl">
+        {timeLeft.days} days, {timeLeft.hours} hours, {timeLeft.minutes}{" "}
+        minutes, {timeLeft.seconds} seconds, {timeLeft.milliseconds} ms
       </p>
     </div>
   );
