@@ -20,7 +20,8 @@ interface BlogPageItemProps {
 async function getBlogFromParams(params: BlogPageItemProps["params"]) {
   const slug = params?.slug?.join("/");
   
-  const blog = allBlogs.find((blog) => blog.slugAsParams === slug);
+  
+  const blog = allBlogs.find((blog) => blog.slug === slug);
 
   if (!blog) {
     return null;

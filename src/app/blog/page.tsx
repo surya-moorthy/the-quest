@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-
   const blogs = allBlogs
     .filter((blog) => blog.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -54,10 +53,7 @@ export default function BlogPage() {
                 </p>
               )}
 
-              <Link
-                href={`/blog/${blog.slugAsParams}`}
-                className="absolute inset-0"
-              >
+              <Link href={`/blog/${blog.slug}`} className="absolute inset-0">
                 <span className="sr-only">View Article</span>
               </Link>
             </article>
