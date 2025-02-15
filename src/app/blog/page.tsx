@@ -11,14 +11,16 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+
   const blogs = allBlogs
     .filter((blog) => blog.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
       <PageHeader
-        title="Blog"
-        description="A blog using velite. Posts are written in MDX"
+        title="Blogs & Journey"
+        description="New day new challenges and new a blog"
       />
       <hr className="my-8" />
 
@@ -52,7 +54,10 @@ export default function BlogPage() {
                 </p>
               )}
 
-              <Link href={blog.slug} className="absolute inset-0">
+              <Link
+                href={`/blog/${blog.slugAsParams}`}
+                className="absolute inset-0"
+              >
                 <span className="sr-only">View Article</span>
               </Link>
             </article>

@@ -5,7 +5,8 @@ import rehypeSlug from "rehype-slug";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
-  slugAsParams: data.slug.split("/").slice(1).join("/"),
+  slugAsParams: data.slug,
+  href: `/blog/${data.slug}`,
 });
 
 const blogs = defineCollection({
@@ -18,9 +19,14 @@ const blogs = defineCollection({
       description: s.string().max(999),
       date: s.isodate(),
       published: s.boolean().default(true),
-      image: s.string().max(99),
+      image: s.string().optional(),
       author: s.string(),
       body: s.mdx(),
+      achievements: s.object({
+        dsa: s.number().optional(),
+        money: s.number().optional(),
+        workout: s.boolean().optional(),
+      }).optional(),
     })
     .transform(computedFields),
 });

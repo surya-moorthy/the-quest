@@ -1,14 +1,11 @@
-import authorAvatar from "../../public/images/author/devbertskie.png";
 export const siteConfig = {
   name: "The Quest",
   description:
-    "MDX Blog Template is a simple implementation of a markdown static blog. Built with Next.js 14 and velite js.",
-  author: "devbertskie",
-  authorImage: authorAvatar,
+    "MISSION - Complete 500 DSA Problems, Earn ₹300,000 & Get in better shape.",
+  author: "ramxcodes",
   social: {
-    github: "https://github.com/devbertskie",
-    twitter: "https://twitter.com",
-    facebook: "https://facebook.com",
+    github: "https://github.com/ramxcodes",
+    twitter: "https://x.com/ramxcodes",
   },
 };
 

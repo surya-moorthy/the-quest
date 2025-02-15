@@ -2,22 +2,13 @@ import { build } from "velite";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    config.plugins.push(new VeliteWebpackPlugin());
+  webpack: (config, { isServer }) => {
+    // Only run Velite in server builds
+    if (isServer) {
+      build(); // Run velite build directly
+    }
     return config;
   },
 };
-
-class VeliteWebpackPlugin {
-  static started = false;
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
-    compiler.hooks.beforeCompile.tapPromise("VeliteWebpackPlugin", async () => {
-      if (VeliteWebpackPlugin.started) return;
-      VeliteWebpackPlugin.started = true;
-      const dev = compiler.options.mode === "development";
-      await build({ watch: dev, clean: !dev });
-    });
-  }
-}
 
 export default nextConfig;

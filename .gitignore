@@ -36,6 +36,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#velite generated files
+#velite generated files and cache
 .velite
+.velite/.cache
 public/static
