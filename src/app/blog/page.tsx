@@ -11,34 +11,85 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const blogs = allBlogs
-    .filter((blog) => blog.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Get only published blogs
+  const publishedBlogs = allBlogs.filter((blog) => blog.published);
+
+  // Sort blogs in ascending order to compute streaks (oldest to newest)
+  const blogsAsc = [...publishedBlogs].sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
+  // Compute streaks: for each day, if at least two tasks are valid then streak increases
+  let prevStreak = 0;
+  const blogsWithStreak = blogsAsc.map((blog) => {
+    let validCount = 0;
+    // For numeric achievements, a value of 0 counts as false
+    if (blog.achievements?.dsa && blog.achievements.dsa > 0) validCount++;
+    if (blog.achievements?.money && blog.achievements.money > 0) validCount++;
+    // For workout, true counts as success
+    if (blog.achievements?.workout) validCount++;
+
+    let streak = 0;
+    if (validCount >= 2) {
+      streak = prevStreak + 1;
+    } else {
+      // Break day: streak resets to 0.
+      streak = 0;
+    }
+    prevStreak = streak;
+    return { ...blog, streak };
+  });
+
+  // Sort descending for display (most recent first)
+  const blogsDesc = blogsWithStreak.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
       <PageHeader
         title="Blogs & Journey"
-        description="New day new challenges and new a blog"
+        description="New day new challenges and a new blog"
       />
       <hr className="my-8" />
 
-      {blogs.length ? (
+      {blogsDesc.length ? (
         <div className="grid gap-10 sm:grid-cols-2">
-          {blogs.map((blog) => (
+          {blogsDesc.map((blog) => (
             <article
               key={blog.slug}
               className="group relative flex flex-col space-y-2"
             >
               {blog.image && (
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  width={804}
-                  height={452}
-                  className="border bg-muted transition-colors"
-                />
+                <div className="relative">
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    width={804}
+                    height={452}
+                    className="border bg-muted transition-colors"
+                  />
+                  {/* Show streak badge if day qualifies */}
+                  {blog.streak > 0 && (
+                    <div className="absolute right-2 top-2 rounded bg-yellow-400 px-2 py-1 text-xs font-bold text-black">
+                      🔥 {blog.streak}
+                    </div>
+                  )}
+                </div>
               )}
+
+              {/* Three tags between image and heading */}
+              <div className="flex gap-2">
+                <span className="rounded-md border px-2 py-1 text-xs">
+                  ❓: {blog.achievements?.dsa ?? 0}
+                </span>
+                <span className="rounded-md border px-2 py-1 text-xs">
+                  💸: {blog.achievements?.money ?? 0}
+                </span>
+                <span className="rounded-md border px-2 py-1 text-xs">
+                  💪🏻: {blog.achievements?.workout ? "🔥" : "😭"}
+                </span>
+              </div>
 
               <h2 className="text-2xl font-extrabold text-primary">
                 {blog.title}

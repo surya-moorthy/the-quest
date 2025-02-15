@@ -19,14 +19,10 @@ interface BlogPageItemProps {
 
 async function getBlogFromParams(params: BlogPageItemProps["params"]) {
   const slug = params?.slug?.join("/");
-  
-  
   const blog = allBlogs.find((blog) => blog.slug === slug);
-
   if (!blog) {
     return null;
   }
-
   return blog;
 }
 
@@ -34,11 +30,9 @@ export async function generateMetadata({
   params,
 }: BlogPageItemProps): Promise<Metadata> {
   const blog = await getBlogFromParams(params);
-
   if (!blog) {
     return {};
   }
-
   return {
     title: blog.title,
     description: blog.description,
@@ -58,7 +52,6 @@ export async function generateStaticParams(): Promise<
 
 export default async function BlogPageItem({ params }: BlogPageItemProps) {
   const blog = await getBlogFromParams(params);
-
   if (!blog) {
     notFound();
   }
@@ -79,6 +72,19 @@ export default async function BlogPageItem({ params }: BlogPageItemProps) {
           {blog.title}
         </h1>
 
+        {/* Achievement tags */}
+        <div className="my-4 flex gap-2">
+          <span className="rounded-md border px-2 py-1 text-xs">
+            ❓: {blog.achievements?.dsa ?? 0}
+          </span>
+          <span className="rounded-md border px-2 py-1 text-xs">
+            💸: {blog.achievements?.money ?? 0}
+          </span>
+          <span className="rounded-md border px-2 py-1 text-xs">
+            💪🏻: {blog.achievements?.workout ? "🔥" : "😭"}
+          </span>
+        </div>
+
         {blog.image && (
           <Image
             src={blog.image}
@@ -89,8 +95,11 @@ export default async function BlogPageItem({ params }: BlogPageItemProps) {
             className="my-8 border bg-muted transition-colors"
           />
         )}
+
         <Mdx code={blog.body} />
+
         <hr className="mt-12" />
+
         <div className="flex justify-center py-6 lg:py-10">
           <Link
             href="/blog"
