@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import App from "@/components/app";
+import { Analytics } from "@vercel/analytics/react";
 
 const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend" });
 
@@ -31,10 +32,13 @@ export default function RootLayout({
         className={cn(
           "min-h-screen antialiased font-lexend bg-background",
           lexend.variable,
-          fontCode.variable,
+          fontCode.variable
         )}
       >
-        <App>{children}</App>
+        <App>
+          {children}
+          <Analytics />
+        </App>
       </body>
     </html>
   );
