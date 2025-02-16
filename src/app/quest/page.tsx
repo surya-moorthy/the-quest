@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "A journey to become better before my 20th birthday.",
     images: [
       {
-        url: "/quest.png",
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/quest.png`,
         width: 1200,
         height: 630,
         alt: "THE QUEST OG Image",

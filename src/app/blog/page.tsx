@@ -14,7 +14,7 @@ export const metadata: NextMetadata = {
     description: "New day new challenges and a new blog",
     images: [
       {
-        url: "/blog.png",
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/blog.png`,
         width: 1200,
         height: 630,
         alt: "THE QUEST OG Image",

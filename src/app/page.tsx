@@ -16,7 +16,7 @@ export const metadata: NextMetadata = {
     description: "I'm on a mission to complete 🔥 THE QUEST within 6 Months",
     images: [
       {
-        url: "/OG.png",
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/OG.png`,
         width: 1200,
         height: 630,
         alt: "THE QUEST OG Image",

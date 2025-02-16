@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
-  const ogImageUrl = latestBlog.image?.startsWith("http")
+  const ogImageUrl = latestBlog.image?.startsWith("https")
     ? latestBlog.image
     : `${process.env.NEXT_PUBLIC_APP_URL}${latestBlog.image}`;
 
