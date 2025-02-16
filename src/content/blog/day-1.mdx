@@ -12,4 +12,69 @@ achievements:
   workout: true
 ---
 
-Today I solved 5 DSA problems, earned ₹1000, and completed my workout! 
+# Day 1 - Starting Strong
+
+Today was a fantastic blend of brain and brawn! I tackled some challenging DSA problems, made progress on my job work, and wrapped up an energizing workout. Here’s a detailed look at my routine:
+
+---
+
+## DSA Challenges
+
+I spent the morning solving 5 DSA problems. One of my favorite challenges was the **Two Sum** problem. Below is my JavaScript solution which uses a hash map for optimal performance:
+
+```js
+function twoSum(nums, target) {
+  const map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) {
+      return [map.get(complement), i];
+    }
+    map.set(nums[i], i);
+  }
+  return [];
+}
+
+// Example usage:
+const nums = [2, 7, 11, 15];
+const target = 9;
+console.log(twoSum(nums, target)); // Output: [0, 1]
+```
+
+This approach helped me understand how leveraging data structures can significantly improve algorithm efficiency.
+
+---
+
+## Job Work Highlights
+
+After the coding session, I switched gears to focus on my professional tasks. Here’s what I accomplished at work today:
+
+- **Bug Fixes:** Resolved several issues that were affecting our production environment.
+- **Performance Optimization:** Improved the response times of our APIs.
+- **Team Collaboration:** Joined a strategic meeting that laid out the week’s priorities and action items.
+
+These efforts not only sharpened my problem-solving skills but also helped me earn an extra ₹1000 through performance bonuses.
+
+---
+
+## Workout Routine
+
+Balancing mental work with physical activity is key to staying productive. Here’s a snapshot of my workout session:
+
+- **Warm-Up:** 10 minutes of dynamic stretching and light cardio.
+- **Strength Training:** 
+  - 3 sets of push-ups
+  - 3 sets of squats
+  - 3 sets of lunges
+- **Cardio:** 20 minutes of brisk running.
+- **Cool Down:** 5 minutes of stretching and mindfulness meditation.
+
+Staying active is essential to keep my energy levels high and to maintain a healthy work-life balance.
+
+---
+
+## Final Thoughts
+
+Today was a rewarding day of learning, professional growth, and personal fitness. I’m excited to see what challenges tomorrow brings and how I can continue to improve in both coding and daily routines!
+
+*Stay tuned for Day 2 - the journey continues...*

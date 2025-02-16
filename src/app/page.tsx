@@ -83,7 +83,7 @@ export default function Home() {
           />
           <ProgressCard
             title="Physique"
-            goal={180}
+            goal={177}
             achieved={daysAchieved}
             unit=" Days"
           />

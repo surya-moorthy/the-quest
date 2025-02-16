@@ -33,15 +33,46 @@ export async function generateMetadata({
   if (!blog) {
     return {};
   }
+
+  // Create OpenGraph image URL with query parameters
+  const ogUrl = new URL(`${process.env.NEXT_PUBLIC_APP_URL}/api/og`);
+  ogUrl.searchParams.set("title", blog.title);
+  ogUrl.searchParams.set("description", blog.description);
+  ogUrl.searchParams.set("dsa", blog.achievements?.dsa?.toString() || "0");
+  ogUrl.searchParams.set("money", blog.achievements?.money?.toString() || "0");
+  ogUrl.searchParams.set(
+    "workout",
+    blog.achievements?.workout?.toString() || "false"
+  );
+
   return {
     title: blog.title,
     description: blog.description,
     authors: {
       name: blog.author,
     },
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      type: "article",
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}`,
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.description,
+      images: [ogUrl.toString()],
+    },
   };
 }
-
 export async function generateStaticParams(): Promise<
   BlogPageItemProps["params"][]
 > {
