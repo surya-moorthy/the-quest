@@ -6,6 +6,24 @@ import Link from "next/link";
 import ProgressCard from "@/components/progress-card";
 import { blogs as allBlogs } from "#site/content";
 import CountdownTimer from "@/components/CountdownTimer";
+import { Metadata as NextMetadata } from "next";
+
+export const metadata: NextMetadata = {
+  title: "The Quest",
+  description: "I'm on a mission to complete 🔥 THE QUEST within 6 Months",
+  openGraph: {
+    title: "THE QUEST",
+    description: "I'm on a mission to complete 🔥 THE QUEST within 6 Months",
+    images: [
+      {
+        url: "/OG.png",
+        width: 1200,
+        height: 630,
+        alt: "THE QUEST OG Image",
+      },
+    ],
+  },
+};
 
 export default function Home() {
   const blogs = allBlogs.filter((blog) => blog.published);

@@ -1,25 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Metadata } from "next";
+import { Metadata as NextMetadata } from "next";
 import PageHeader from "@/components/page-header";
 import { blogs as allBlogs } from "#site/content";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata: NextMetadata = {
+  title: "Blog | The Quest",
+  description: "Blogs & Journey",
+  openGraph: {
+    title: "Blog | The Quest",
+    description: "New day new challenges and a new blog",
+    images: [
+      {
+        url: "/blog.png",
+        width: 1200,
+        height: 630,
+        alt: "THE QUEST OG Image",
+      },
+    ],
+  },
 };
 
 export default function BlogPage() {
-  // Get only published blogs
   const publishedBlogs = allBlogs.filter((blog) => blog.published);
 
-  // Sort blogs in ascending order to compute streaks (oldest to newest)
   const blogsAsc = [...publishedBlogs].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
   );
 
-  // Compute streaks: if at least two tasks are valid then streak increases
   let prevStreak = 0;
   const blogsWithStreak = blogsAsc.map((blog) => {
     let validCount = 0;
@@ -31,19 +41,17 @@ export default function BlogPage() {
     if (validCount >= 2) {
       streak = prevStreak + 1;
     } else {
-      streak = 0; // Break day: streak resets to 0.
+      streak = 0;
     }
     prevStreak = streak;
     return { ...blog, streak };
   });
 
-  // Compute the longest streak among all blog entries
   const longestStreak = blogsWithStreak.reduce(
     (max, blog) => Math.max(max, blog.streak),
     0
   );
 
-  // Sort descending for display (most recent first)
   const blogsDesc = blogsWithStreak.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );

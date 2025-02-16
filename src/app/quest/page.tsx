@@ -6,8 +6,20 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "The Quest",
-  description: "A 100-day journey of coding, earning, and fitness",
+  title: "Quest | The Quest",
+  description: "A journey to become better before my 20th birthday.",
+  openGraph: {
+    title: "Quest | The Quest",
+    description: "A journey to become better before my 20th birthday.",
+    images: [
+      {
+        url: "/blog.png",
+        width: 1200,
+        height: 630,
+        alt: "THE QUEST OG Image",
+      },
+    ],
+  },
 };
 
 export default function QuestPage() {
