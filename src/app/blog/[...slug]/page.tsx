@@ -1,10 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Metadata } from "next";
 import { blogs as allBlogs } from "#site/content";
 import { cn, formatDate } from "@/lib/utils";
 import "@/styles/mdx.css";
-
-import Image from "next/image";
 import { Mdx } from "@/components/mdx-component";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
@@ -117,12 +116,11 @@ export default async function BlogPageItem({ params }: BlogPageItemProps) {
         </div>
 
         {blog.image && (
-          <Image
+          <img
             src={blog.image}
             alt={blog.title}
             width={720}
             height={405}
-            priority
             className="my-8 border bg-muted transition-colors"
           />
         )}

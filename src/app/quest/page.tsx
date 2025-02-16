@@ -1,40 +1,56 @@
 import React from "react";
 import PageHeader from "@/components/page-header";
 import { Metadata } from "next";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "The Quest",
-  description: "A 100-day journey of coding, earning, and fitness"
+  description: "A 100-day journey of coding, earning, and fitness",
 };
 
 export default function QuestPage() {
   return (
     <div className="container relative max-w-3xl py-6 lg:py-10">
-      <PageHeader 
-        title="The Quest" 
-        description="My 100-day journey to become better" 
+      <PageHeader
+        title="The Quest"
+        description="A journey to become better before my 20th birthday."
       />
-      
-      <div className="prose prose-gray dark:prose-invert">
+
+      <div className="prose prose-gray dark:prose-invert mt-4">
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-bold">The Challenge</h2>
+          <h2 className="mb-4 text-2xl font-bold">The Quest</h2>
           <p>
-            I&apos;ve embarked on a 100-day quest to transform myself through three core pillars:
+            The Quest is a{" "}
+            <span className="text-primary">6-months journey</span> of coding,
+            earning, and fitness. It&apos;s a personal challenge to become
+            better before my 20th birthday.
           </p>
           <ul className="mt-2 list-disc pl-6">
-            <li><strong>DSA Mastery:</strong> Solving at least 2 Data Structures & Algorithms problems daily</li>
-            <li><strong>Income Growth:</strong> Working on freelance projects to earn consistently</li>
-            <li><strong>Physical Health:</strong> Maintaining a regular workout routine</li>
+            <li>
+              <strong>DSA Mastery:</strong> Solving at least 2/3 DSA problems
+              daily.
+            </li>
+            <li>
+              <strong>Income Growth:</strong> Working on freelance projects to
+              earn consistently by the end of the quest.
+            </li>
+            <li>
+              <strong>Physical Health:</strong> Maintaining a regular workout
+              routine and healthy eating habits.
+            </li>
           </ul>
         </section>
 
         <section className="mb-8">
           <h2 className="mb-4 text-2xl font-bold">Why This Quest?</h2>
           <p>
-            In the fast-paced world of technology, continuous improvement is crucial. 
-            This quest combines technical growth, financial independence, and physical 
-            wellbeing - the three pillars I believe are essential for a successful 
-            career in tech.
+            I believe that the best way to grow is by challenging oneself. The
+            Quest is a way to push my limits and become better in all aspects of
+            life. I want to become a better version of myself before my 20th
+            birthday. I want to be more disciplined, more focused, and more
+            successful.
           </p>
         </section>
 
@@ -42,22 +58,24 @@ export default function QuestPage() {
           <h2 className="mb-4 text-2xl font-bold">The Goals</h2>
           <div className="grid gap-4">
             <div className="rounded-lg border p-4">
-              <h3 className="font-bold">Technical Excellence</h3>
+              <h3 className="font-bold">DSA in JavaScript</h3>
               <p className="text-sm text-muted-foreground">
-                Master DSA concepts, improve problem-solving skills, and prepare for 
-                technical interviews.
+                Solve at least 500 DSA problems in JavaScript by the end of the
+                quest.
               </p>
             </div>
             <div className="rounded-lg border p-4">
-              <h3 className="font-bold">Financial Growth</h3>
+              <h3 className="font-bold">Earn Money</h3>
               <p className="text-sm text-muted-foreground">
-                Build a sustainable income stream through freelancing and personal projects.
+                Work on freelance projects to earn ₹300,000 by the end of the
+                quest.
               </p>
             </div>
             <div className="rounded-lg border p-4">
               <h3 className="font-bold">Health & Fitness</h3>
               <p className="text-sm text-muted-foreground">
-                Maintain physical and mental wellbeing through regular exercise and healthy habits.
+                Do 5 days a week workout and learn calisthenics by the end of
+                the quest.
               </p>
             </div>
           </div>
@@ -66,7 +84,8 @@ export default function QuestPage() {
         <section>
           <h2 className="mb-4 text-2xl font-bold">Progress Tracking</h2>
           <p>
-            I&apos;ll be documenting my daily progress through blog posts, including:
+            I&apos;ll be documenting my daily progress through blog posts,
+            including:
           </p>
           <ul className="mt-2 list-disc pl-6">
             <li>Number of DSA problems solved</li>
@@ -74,6 +93,18 @@ export default function QuestPage() {
             <li>Workout completion status</li>
             <li>Key learnings and challenges</li>
           </ul>
+
+          <div className="mt-4 space-x-4 text-center">
+            <Link
+              href="/blog"
+              className={cn(
+                buttonVariants({ size: "lg", variant: "secondary" }),
+                "border"
+              )}
+            >
+              See the progress ➤
+            </Link>
+          </div>
         </section>
       </div>
     </div>

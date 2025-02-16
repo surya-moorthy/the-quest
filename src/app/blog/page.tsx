@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Metadata } from "next";
 import PageHeader from "@/components/page-header";
 import { blogs as allBlogs } from "#site/content";
-import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 
@@ -71,7 +71,7 @@ export default function BlogPage() {
             >
               {blog.image && (
                 <div className="relative">
-                  <Image
+                  <img
                     src={blog.image}
                     alt={blog.title}
                     width={804}
