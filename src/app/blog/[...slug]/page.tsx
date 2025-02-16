@@ -33,16 +33,11 @@ export async function generateMetadata({
     return {};
   }
 
-  // Create OpenGraph image URL with query parameters
-  const ogUrl = new URL(`${process.env.NEXT_PUBLIC_APP_URL}/api/og`);
-  ogUrl.searchParams.set("title", blog.title);
-  ogUrl.searchParams.set("description", blog.description);
-  ogUrl.searchParams.set("dsa", blog.achievements?.dsa?.toString() || "0");
-  ogUrl.searchParams.set("money", blog.achievements?.money?.toString() || "0");
-  ogUrl.searchParams.set(
-    "workout",
-    blog.achievements?.workout?.toString() || "false"
-  );
+  // Use blog.image as the OpenGraph image.
+  // If blog.image is a relative path, prepend with NEXT_PUBLIC_APP_URL.
+  const ogImageUrl = blog.image?.startsWith("http")
+    ? blog.image
+    : `${process.env.NEXT_PUBLIC_APP_URL}${blog.image}`;
 
   return {
     title: blog.title,
@@ -55,23 +50,26 @@ export async function generateMetadata({
       description: blog.description,
       type: "article",
       url: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}`,
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-        },
-      ],
+      images: ogImageUrl
+        ? [
+            {
+              url: ogImageUrl,
+              width: 1200,
+              height: 630,
+              alt: blog.title,
+            },
+          ]
+        : [],
     },
     twitter: {
       card: "summary_large_image",
       title: blog.title,
       description: blog.description,
-      images: [ogUrl.toString()],
+      images: ogImageUrl ? [ogImageUrl] : [],
     },
   };
 }
+
 export async function generateStaticParams(): Promise<
   BlogPageItemProps["params"][]
 > {
@@ -105,13 +103,13 @@ export default async function BlogPageItem({ params }: BlogPageItemProps) {
         {/* Achievement tags */}
         <div className="my-4 flex gap-2">
           <span className="rounded-md border px-2 py-1 text-xs">
-            ❓: {blog.achievements?.dsa ?? 0}
+            🤔 DSA Problems solved today : {blog.achievements?.dsa ?? 0}
           </span>
           <span className="rounded-md border px-2 py-1 text-xs">
-            💸: {blog.achievements?.money ?? 0}
+            💸 Money Earned : {blog.achievements?.money ?? 0}
           </span>
           <span className="rounded-md border px-2 py-1 text-xs">
-            💪🏻: {blog.achievements?.workout ? "🔥" : "😭"}
+            💪🏻 Workout : {blog.achievements?.workout ? "Yes" : "No"}
           </span>
         </div>
 

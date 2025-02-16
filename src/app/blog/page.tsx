@@ -90,7 +90,7 @@ export default function BlogPage() {
               {/* Three tags between image and heading */}
               <div className="flex gap-2">
                 <span className="rounded-md border px-2 py-1 text-xs">
-                  ❓: {blog.achievements?.dsa ?? 0}
+                  🤔 : {blog.achievements?.dsa ?? 0}
                 </span>
                 <span className="rounded-md border px-2 py-1 text-xs">
                   💸: {blog.achievements?.money ?? 0}
