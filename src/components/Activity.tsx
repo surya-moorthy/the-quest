@@ -2,7 +2,7 @@
 import React from "react";
 
 export interface ActivityProps {
-  dsa: number;
+  projects: number;
   money: number;
   workout: boolean;
 }
@@ -11,7 +11,7 @@ export interface ActivityProps {
  * Activity shows key stats for your daily quest in a website-themed card.
  */
 export const Activity: React.FC<ActivityProps> = ({
-  dsa,
+  projects,
   money,
   workout,
 }) => {
@@ -20,7 +20,7 @@ export const Activity: React.FC<ActivityProps> = ({
       <h3 className="mb-4 text-2xl font-bold text-primary">Daily Summary</h3>
       <ul className="space-y-2">
         <li className="text-muted-foreground">
-          <span className="font-semibold">Projects Built:</span> {dsa}
+          <span className="font-semibold">Projects Built:</span> {projects}
         </li>
         <li className="text-muted-foreground">
           <span className="font-semibold">Income Earned:</span> ₹{money}
