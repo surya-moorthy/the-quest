@@ -103,7 +103,7 @@ export default async function BlogPageItem({ params }: BlogPageItemProps) {
         {/* Achievement tags */}
         <div className="my-4 flex gap-2">
           <span className="rounded-md border px-2 py-1 text-xs">
-            🤔 DSA Problems solved today : {blog.achievements?.dsa ?? 0}
+            🤔 Projects built today : {blog.achievements?.projects ?? 0}
           </span>
           <span className="rounded-md border px-2 py-1 text-xs">
             💸 Money Earned : {blog.achievements?.money ?? 0}
