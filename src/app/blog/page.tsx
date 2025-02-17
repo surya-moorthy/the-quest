@@ -33,7 +33,7 @@ export default function BlogPage() {
   let prevStreak = 0;
   const blogsWithStreak = blogsAsc.map((blog) => {
     let validCount = 0;
-    if (blog.achievements?.dsa && blog.achievements.dsa > 0) validCount++;
+    if (blog.achievements?.projects && blog.achievements.projects > 0) validCount++;
     if (blog.achievements?.money && blog.achievements.money > 0) validCount++;
     if (blog.achievements?.workout) validCount++;
 
