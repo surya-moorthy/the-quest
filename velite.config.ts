@@ -23,7 +23,7 @@ const blogs = defineCollection({
       author: s.string(),
       body: s.mdx(),
       achievements: s.object({
-        dsa: s.number().optional(),
+        projects: s.number().optional(),
         money: s.number().optional(),
         workout: s.boolean().optional(),
       }).optional(),

@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "The Quest",
   description:
-    "MISSION - Complete 500 DSA Problems, Earn ₹300,000 & Get in better shape.",
-  author: "ramxcodes",
+    "MISSION - Build my greater version of myself , have money for impact and influence",
+  author: "suryabuilds",
   social: {
-    github: "https://github.com/ramxcodes",
-    twitter: "https://x.com/ramxcodes",
+    github: "https://github.com/surya-moorthy",
+    twitter: "https://x.com/suryabuilds",
   },
 };
 

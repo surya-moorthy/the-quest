@@ -20,7 +20,7 @@ export const Activity: React.FC<ActivityProps> = ({
       <h3 className="mb-4 text-2xl font-bold text-primary">Daily Summary</h3>
       <ul className="space-y-2">
         <li className="text-muted-foreground">
-          <span className="font-semibold">DSA Problems Solved:</span> {dsa}
+          <span className="font-semibold">Projects Built:</span> {dsa}
         </li>
         <li className="text-muted-foreground">
           <span className="font-semibold">Income Earned:</span> ₹{money}

@@ -10,10 +10,10 @@ import { Metadata as NextMetadata } from "next";
 
 export const metadata: NextMetadata = {
   title: "The Quest",
-  description: "I'm on a mission to complete 🔥 THE QUEST within 6 Months",
+  description: "I'm on a mission to complete 🔥 my responsibilities have impact and influence",
   openGraph: {
     title: "THE QUEST",
-    description: "I'm on a mission to complete 🔥 THE QUEST within 6 Months",
+    description: "I'm on a mission to complete 🔥 my responsibilities have impact and influence",
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_APP_URL}/OG.png`,
@@ -29,8 +29,8 @@ export default function Home() {
   const blogs = allBlogs.filter((blog) => blog.published);
 
   // Calculate total DSA questions solved
-  const dsaAchieved = blogs.reduce(
-    (total, blog) => total + (blog.achievements?.dsa || 0),
+  const projectsBuilt = blogs.reduce(
+    (total, blog) => total + (blog.achievements?.projects || 0),
     0
   );
 
@@ -76,7 +76,7 @@ export default function Home() {
         <h1 className="text-3xl capitalize sm:text-5xl md:text-6xl lg:text-7xl">
           I&apos;m on a mission to complete 🔥
           <span className="font-code font-bold text-primary"> THE QUEST </span>
-          within <span className="font-code text-yellow-300">6 Months</span>
+          within <span className="font-code text-yellow-300">7 Months</span>
         </h1>
         <p className="max-w-2xl leading-normal text-muted-foreground sm:text-xl sm:leading-8">
           {siteConfig.description}
@@ -88,14 +88,14 @@ export default function Home() {
         {/* Progress Cards */}
         <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ProgressCard
-            title="DSA in JS"
+            title="Projects built"
             goal={500}
-            achieved={dsaAchieved}
+            achieved={projectsBuilt}
             unit=" Questions"
           />
           <ProgressCard
             title="Money"
-            goal={300000}
+            goal={1000000}
             achieved={moneyAchieved}
             unit="₹"
           />

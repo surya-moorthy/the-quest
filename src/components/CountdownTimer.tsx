@@ -5,8 +5,8 @@ import React, { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
   // Define the fixed dates
-  const startDate = new Date("2025-02-16T00:00:00");
-  const targetDate = new Date("2025-08-13T00:00:00");
+  const startDate = new Date("2025-02-17T00:00:00");
+  const targetDate = new Date("2025-09-20T00:00:00");
 
   const calculateTimeLeft = () => {
     const now = new Date();
