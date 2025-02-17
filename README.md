@@ -1,8 +1,7 @@
-# MDX Static Blog Template
+# The Quest Template
 
-MDX Blog Template is a simple implementation of a markdown static blog. Built with Next.js 14 and velite js.
 
-<img src="screenshot/mdx-blog-template.jpg" alt="Dashboard" width="100%">
+<img src="https://github.com/ramxcodes/the-quest/blob/main/public/OG.png?raw=true" alt="Dashboard" width="100%">
 
 ## Table of Contents
 
@@ -34,18 +33,18 @@ MDX Blog Template is a simple implementation of a markdown static blog. Built wi
 
 ## Run Locally
 
-To get a copy of MDX Blog Template up and running on your local machine, follow these steps:
+To get a copy of The Quest Template up and running on your local machine, follow these steps:
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/devbertskie/next-mdx-blog.git
+   git clone https://github.com/ramxcodes/the-quest.git
    ```
 
    After successful cloned. Head over to the project directory
 
    ```bash
-   cd next-mdx-blog
+   cd the-quest
    ```
 
 2. **Install Dependencies**:
@@ -53,7 +52,7 @@ To get a copy of MDX Blog Template up and running on your local machine, follow 
    Navigate into the project directory and install the required dependencies:
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Run the Development Server**:
@@ -61,7 +60,7 @@ To get a copy of MDX Blog Template up and running on your local machine, follow 
    Start the app in development mode with the following command:
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
    Head over to your browser and access the `localhost:3000`
@@ -71,7 +70,7 @@ To get a copy of MDX Blog Template up and running on your local machine, follow 
    To build the app, run the following command:
 
    ```bash
-   npm run build
+   bun run build
    ```
 
 ---
@@ -80,4 +79,4 @@ To get a copy of MDX Blog Template up and running on your local machine, follow 
 
   To add new blog content, go to `content` folder and you can add new markdown component in `.mdx` file
 
-  `Important`: Make sure to name the component with dash(`-`) and without space. Example: `my-example-blog.mdx`
+  `Important`: Make sure to name the component with dash(`-`) and without space. Example: `my-example-blog.mdx` or `day-1.mdx`

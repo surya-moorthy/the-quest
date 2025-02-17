@@ -1,0 +1,134 @@
+---
+slug: "day-2"
+title: "Day 2 - It's Like a Game"
+description: "Game mode on - Be stronger than your excuses." 
+date: "2024-02-17"
+author: "ramxcodes"
+published: false
+image: "/images/blog/day-2.png"
+achievements:
+  dsa: 0
+  money: 0
+  workout: false
+---
+
+# Day 1 - Starting Strong
+
+Today i finally finished this website. Now its time to start the journey.
+
+Today's TODO's are:
+
+<Todo title="Complete the website" status="TODO" />
+<Todo title="SS-VI assessment test" status="TODO" />
+<Todo title="Internship work" status="TODO" />
+<Todo title="Do some DSA" status="TODO" />
+
+
+---
+
+<TimelineCard 
+  time="5:30 PM" 
+  title="Woke Up" 
+  description="Checked the phone for any important notifications and there were a lot of them." 
+  icon="🌅"
+  details={[
+    { 
+      title: "6:00 - 8:00 PM Internship Work", 
+      description: "Created 4 logo for client.", 
+    },
+    { 
+      title: "8:00 - 10:00 PM", 
+      description: "Worked on this website.", 
+    }
+  ]}
+/>
+
+Then there was a soft skill assessment test which i gave barely made it in time.
+11:00 pm onwards i was working on this website. 
+
+So, far i was following [Hunx DSA Tutorial](https://www.youtube.com/@huxnwebdev).
+
+Learned to create custom array & array method in javascript.
+i created 4 methods till now `push`, `get`, `pop`, `shift`.
+
+```javascript
+class myArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
+  push(item) {
+    // console.log(item);
+
+    this.data[this.length] = item;
+
+    // console.log("-------");
+    // console.log(this.data);
+
+    this.length++;
+
+    // console.log("-------");
+    // console.log(this.length);
+
+    return this.length;
+  }
+
+  get(index) {
+    return this.data[index];
+  }
+
+  pop() {
+    const lastItem = this.data[this.length - 1];
+    // console.log(lastItem);
+
+    delete this.data[this.length - 1];
+    this.length--;
+
+    return lastItem;
+  }
+
+  shift() {
+    const firstItem = this.data[0];
+
+    for (let i = 0; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+
+    delete this.data[this.length - 1];
+
+    return firstItem;
+  }
+}
+
+const myNewArray = new myArray();
+
+myNewArray.push(123);
+myNewArray.push("orange");
+myNewArray.push("Dick");
+myNewArray.push("Lemon");
+myNewArray.push(true);
+
+console.log("--------------------------------------");
+
+console.log("PRE --", myNewArray);
+
+// console.log(myNewArray.get(1));
+
+// myNewArray.pop();
+
+console.log(myNewArray.shift());
+
+
+console.log("AFT --", myNewArray);
+
+```
+<Todo title="Complete the website" status="completed" />
+<Todo title="SS-VI assessment test" status="completed" />
+<Todo title="Internship work" status="completed" />
+<Todo title="Do some DSA" status="failed" />
+
+So todays summary is :
+
+<Activity dsa={0} money={0} workout={false} />
+
+See you guys tomorrow 🙋🏻‍♂️

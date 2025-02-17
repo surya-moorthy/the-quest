@@ -7,6 +7,7 @@ import Image from "next/image";
 import { TimelineCard } from "./TimelineCard";
 import { Todo } from "./Todo";
 import { Activity } from "./Activity";
+import Cal from "./Cal";
 
 const useMDXComponent = (code: string) => {
   const fn = new Function(code);
@@ -163,6 +164,7 @@ const components = {
   TimelineCard,
   Todo,
   Activity,
+  Cal
 };
 
 interface MdxProps {
